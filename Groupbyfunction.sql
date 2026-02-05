@@ -1,0 +1,18 @@
+select * from customers;
+use classicmodels;
+select * from customers where country = 'usa';
+select state,country, city
+from customers where country = 'france'OR COUNTRY = 'usa';
+
+-- GROUP BY FUNCTION
+-- COUNTS THE NUMBER OF CUSTOMERS FROM EACH COUNTRY
+SELECT COUNTRY , COUNT(CUSTOMERNUMBER) AS TOTAL_CUSTOMERS
+FROM CUSTOMERS
+GROUP BY COUNTRY
+ORDER BY COUNTRY;
+
+-- COUNT THE CITY FROM EVERY COUNTRY
+SELECT COUNTRY , COUNT(CITY) AS TOTAL_CITY
+FROM CUSTOMERS
+GROUP BY COUNTRY
+ORDER BY COUNTRY;
