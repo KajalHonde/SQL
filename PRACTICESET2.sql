@@ -1,0 +1,58 @@
+-- SHOW ME EMPOLYEES NAMES AND THEIR MANAGER NAMES
+CREATE DATABASE VIR;
+USE VIR;
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    department VARCHAR(50),
+    manager_id INT
+);
+
+INSERT INTO employees (emp_id, emp_name, department, manager_id) VALUES
+(1, 'Raj',    'Sales', 3),
+(2, 'Priya',  'HR',    3),
+(3, 'Karan',  'CEO',   NULL),
+(4, 'Mohan',  'HR',    2),
+(5, 'Sarah',  'IT',    6),
+(6, 'John',   'CTO',   3),
+(7, 'Neha',   'Sales', 1),
+(8, 'Riya',   'IT',    6),
+(9, 'Arjun',  'Sales', 1),
+(10,'Teena',  'HR',    2);
+
+SELECT * FROM employees;
+
+SELECT 
+      E.EMP_NAME AS EMPLOYEES,
+      M.EMP_NAME AS MANAGER
+FROM
+     EMPLOYEES AS E
+LEFT JOIN
+     EMPLOYEES AS M
+ON
+  M.EMP_ID = E.MANAGER_ID;
+
+SELECT * FROM EMPLOYEES;
+SELECT 
+      E.EMP_NAME AS EMPLOYEES,
+      M.EMP_NAME AS MANAGER
+FROM EMPLOYEES E
+INNER JOIN 
+     EMPLOYEES M 
+ON  M.EMP_ID= E.MANAGER_ID;
+
+-- FIND OUT WHO WORKS UNDER RAJ
+
+SELECT 
+      E.EMP_NAME AS EMPLOYEES,
+      M.EMP_NAME AS MANAGER
+FROM EMPLOYEES E
+INNER JOIN 
+     EMPLOYEES M 
+ON  M.EMP_ID= E.MANAGER_ID
+WHERE E.MANAGER_ID = 1;
+
+-- SHOW EMPLOYEES NAMES WHO DO NOT HAVE MANGER ID
+SELECT EMP_NAME
+FROM EMPLOYEES
+WHERE MANAGER_ID IS NULL;
